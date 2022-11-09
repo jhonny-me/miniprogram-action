@@ -1,0 +1,47 @@
+name: 'Wechat miniProgram cli action'
+description: 'Wechat miniProgram cli action'
+inputs:
+  appid:  # id of input
+    description: '小程序/小游戏项目的 appid'
+    required: true
+  type:  # id of input
+    description: '项目的类型，有效值 miniProgram/miniProgramPlugin/miniGame/miniGamePlugin'
+    required: false
+    default: 'miniProgram'
+  projectPath:  # id of input
+    description: '项目的路径，即 project.config.json 所在的目录'
+    required: true
+  privateKey:  # id of input
+    description: '私钥，在获取项目属性和上传时用于鉴权使用，在 微信公众平台 上使用小程序管理员登录后下载'
+    required: false
+  privateKeyPath:  # id of input
+    description: '私钥文件的路径，（创建 Project 对象，需要传入私钥内容或私钥文件路径）'
+    required: false
+  ignores:  # id of input
+    description: '指定需要排除的规则, need to be stringified string array'
+    required: false
+
+  version:  # id of input
+    description: '自定义版本号'
+    required: true
+  desc:  # id of input
+    description: '自定义备注'
+    required: false
+  setting:  # id of input
+    description: '#编译设置, stringified object'
+    required: false
+  robot:  # id of input
+    description: '指定使用哪一个 ci 机器人，可选值：1 ~ 30'
+    required: false
+  threads:  # id of input
+    description: '指定本地编译过程中开启的线程数'
+    required: false
+  useCOS:  # id of input
+    description: '使用异步方式上传，当代码包大于 5MB 时，默认开启'
+    required: false
+outputs:
+  result: # id of output
+    description: 'Stringified Upload Response'
+runs:
+  using: 'node16'
+  main: 'index.js'
